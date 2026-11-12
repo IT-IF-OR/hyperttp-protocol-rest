@@ -1,6 +1,6 @@
 {
   "name": "@hyperttp/protocol-rest",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "REST client and server protocol for Hyperttp",
   "license": "MIT",
   "author": "dirold2",
@@ -24,7 +24,9 @@
     }
   },
   "scripts": {
-    "build": "node ../../scripts/build-package.ts",
+    "pub": "d-publish",
+    "dist": "d-dist",
+    "build": "tsc && esbuild \"dist/**/*.js\" --outdir=dist --allow-overwrite --minify --sourcemap && d-build",
     "typecheck": "tsc --noEmit && tsc -p tsconfig.test.json",
     "test": "vitest run",
     "lint": "oxlint src tests",
@@ -32,15 +34,16 @@
     "format:check": "oxfmt src tests --check"
   },
   "peerDependencies": {
-    "@hyperttp/types": "^0.5.3"
+    "@hyperttp/types": "^0.5.4"
   },
   "devDependencies": {
+    "@dirold2/dev-tools": "^1.1.3",
     "@types/bun": "^1.4.4",
     "@types/node": "^26.6.6",
     "@vitest/coverage-v8": "^5.1.0",
     "esbuild": "^0.28.2",
-    "oxfmt": "^0.76.0",
-    "oxlint": "^1.90.0",
+    "oxfmt": "^0.78.0",
+    "oxlint": "^1.93.0",
     "typescript": "^7.0.2",
     "vitest": "^5.1.0"
   }
