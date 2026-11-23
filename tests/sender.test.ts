@@ -397,6 +397,7 @@ describe("RestSender.send / parse", () => {
       return {
         status: 200,
         headers: { "content-type": "application/json" },
+        trailers: { "grpc-status": "0" },
         url: (req as { url: string }).url,
         body: new TextEncoder().encode('{"ok":true}'),
       };
@@ -416,6 +417,7 @@ describe("RestSender.send / parse", () => {
 
     expect(universal.protocol).toBe("rest");
     expect(universal.status).toBe(200);
+    expect(universal.trailers).toEqual({ "grpc-status": "0" });
     expect(universal.url).toBe("/users");
     expect(universal.data).toEqual({ ok: true });
     expect(universal.raw).toBe(raw);

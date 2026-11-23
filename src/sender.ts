@@ -455,6 +455,7 @@ export class RestSender implements HyperSender<
       status: raw.status,
       statusText: raw.statusText || DEFAULT_STATUS_TEXTS[raw.status] || "",
       headers: raw.headers,
+      trailers: raw.trailers,
       url: raw.url,
       data: parsedData,
       raw,
